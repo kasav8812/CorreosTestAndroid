@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">CorreosTestAndroid</string>
+    <string name="navTitle">Mis Correos</string>
+    <string name="favs">Destacado</string>
+    <string name="spam">Spam</string>
+    <string name="search">Buscar correo</string>
+</resources>

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        tools:ignore="MissingConstraints">
+
+        <TextView
+            android:textStyle="bold"
+            android:gravity="center_vertical|center_horizontal"
+            android:text="@string/navTitle"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"/>
+
+        <ImageButton
+            android:contentDescription="@android:string/ok"
+            android:background="@android:color/transparent"
+            android:src="@android:drawable/ic_menu_add"
+            android:layout_alignParentEnd="true"
+            android:layout_width="50dp"
+            android:tint="@android:color/black"
+            android:layout_height="match_parent"
+            tools:ignore="UseAppTint" />
+    </RelativeLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

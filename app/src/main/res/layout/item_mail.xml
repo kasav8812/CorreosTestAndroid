@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <androidx.appcompat.widget.LinearLayoutCompat
+        tools:viewBindingIgnore="true"
+        android:layout_marginStart="5dp"
+        android:layout_marginEnd="5dp"
+        android:gravity="center_vertical"
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:orientation="horizontal"
+        tools:ignore="MissingConstraints">
+
+        <ImageView
+            android:id="@+id/mDestacado"
+            android:contentDescription="@string/favs"
+            android:background="@android:color/white"
+            android:src="@mipmap/favorito"
+            android:layout_width="25dp"
+            android:scaleType="centerCrop"
+            android:layout_height="25dp"
+            app:tint="@android:color/black"/>
+
+        <ImageView
+            android:id="@+id/mSpam"
+            android:contentDescription="@string/spam"
+            android:background="@android:color/transparent"
+            android:src="@mipmap/advertencia"
+            android:layout_width="25dp"
+            android:padding="3dp"
+            android:scaleType="centerCrop"
+            android:layout_height="25dp"
+            app:tint="@android:color/black"/>
+
+        <TextView
+            android:textAppearance="@style/TextAppearance.AppCompat.Small"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/mEmisor"/>
+
+        <TextView
+            android:textAppearance="@style/TextAppearance.AppCompat.Small"
+            android:layout_weight="1"
+            android:layout_marginStart="5dp"
+            android:layout_marginEnd="5dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/mSubject"/>
+
+        <TextView
+            android:textAppearance="@style/TextAppearance.AppCompat.Small"
+            android:layout_weight="1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="5dp"
+            android:layout_marginEnd="5dp"
+            android:id="@+id/mMessage"/>
+
+        <TextView
+            android:textAppearance="@style/TextAppearance.AppCompat.Small"
+            android:layout_marginStart="5dp"
+            android:layout_marginEnd="5dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/mHour"/>
+
+        <ImageView
+            android:id="@+id/mDelete"
+            android:contentDescription="@string/spam"
+            android:background="@android:color/transparent"
+            android:src="@mipmap/borrar"
+            android:layout_width="25dp"
+            android:scaleType="centerCrop"
+            android:layout_height="25dp"
+            app:tint="@android:color/holo_red_dark"/>
+    </androidx.appcompat.widget.LinearLayoutCompat>
+</androidx.constraintlayout.widget.ConstraintLayout>
