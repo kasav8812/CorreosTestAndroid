@@ -26,6 +26,13 @@ class MailRepository {
             return mailTableModel
         }
 
+        fun deleteMail(context: Context, mEmailId: Int){
+            mailDatabase = initializeDB(context)
+            CoroutineScope(IO).launch {
+                mailDatabase!!.mailDao().deleteEmail(mEmailId)
+            }
+        }
+
         fun consumingApi(context: Context){
             mailDatabase = initializeDB(context)
             var mListTemp : ArrayList<MailEntity> = ArrayList()

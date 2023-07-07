@@ -13,6 +13,7 @@ import com.example.correostestandroid.databinding.ItemMailBinding
 
 interface CallBackSelected {
     fun refreshData()
+    fun deleteMail(mIdEmail: Int)
 }
 
 class ListMailAdapter (private val mMailsList: ArrayList<MailEntity>) : RecyclerView.Adapter<ListMailAdapter.DataViewHolder>() {
@@ -28,7 +29,6 @@ class ListMailAdapter (private val mMailsList: ArrayList<MailEntity>) : Recycler
 
     override fun getItemCount(): Int = mMailsList.size
 
-    @SuppressLint("NotifyDataSetChanged")
     fun updateList(mList : List<MailEntity>, mCallback: CallBackSelected) {
         this.mCallback = mCallback
         mMailsList.clear()
@@ -68,7 +68,7 @@ class ListMailAdapter (private val mMailsList: ArrayList<MailEntity>) : Recycler
 
             binding.mDelete.setOnClickListener {
                 selectDelete(pos)
-                mCallback.refreshData()
+                mCallback.deleteMail(mSectionsArray[pos].Id!!)
             }
         }
 

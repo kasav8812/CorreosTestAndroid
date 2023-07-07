@@ -22,19 +22,29 @@ class MailViewModel : ViewModel() {
             }
     }
 
-    fun filterMails(mPhrase : String) : LiveData<List<MailEntity>>? {
-        var mListTempora = liveDataMail
-        return Transformations.map(mListTempora) {
+    fun deleteMail(context: Context, mEmailId : Int):LiveData<List<MailEntity>>{
+        MailRepository.deleteMail(context,mEmailId)
+        liveDataMail = MailRepository.getMails(context)!!
+        return Transformations.map(liveDataMail) {
             it.filter { it ->
-                it.emisor.contains(mPhrase) || it.asunto.contains(mPhrase) || it.correoEmisor.contains(mPhrase) && !it.eliminado
+                !it.eliminado
             }
         }
     }
 
-    fun getMails() : LiveData<List<MailEntity>>? {
+    fun getAllMails(context: Context) : LiveData<List<MailEntity>>? {
+        liveDataMail = MailRepository.getMails(context)!!
         return Transformations.map(liveDataMail) {
             it.filter { it ->
                 !it.eliminado
+            }
+        }
+    }
+    fun filterMails(mPhrase : String, context: Context) : LiveData<List<MailEntity>>? {
+        liveDataMail = MailRepository.getMails(context)!!
+        return Transformations.map(liveDataMail) {
+            it.filter { it ->
+                it.emisor.contains(mPhrase) || it.asunto.contains(mPhrase) || it.correoEmisor.contains(mPhrase) && !it.eliminado
             }
         }
     }

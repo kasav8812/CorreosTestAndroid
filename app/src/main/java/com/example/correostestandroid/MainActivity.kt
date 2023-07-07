@@ -15,7 +15,6 @@ class MainActivity : AppCompatActivity(), SearchView.OnQueryTextListener, CallBa
     private lateinit var mailViewModel: MailViewModel
     private lateinit var mAdapter : ListMailAdapter
     private lateinit var binding: ActivityMainBinding
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
@@ -26,36 +25,37 @@ class MainActivity : AppCompatActivity(), SearchView.OnQueryTextListener, CallBa
         mailViewModel.callApi(this@MainActivity)
         getData()
     }
-
     fun addListener(){
         binding.mSearch.setOnQueryTextListener(this)
     }
-
     private fun createTable(){
         binding.mListMailsRecycler.layoutManager = LinearLayoutManager(this)
         mAdapter = ListMailAdapter(arrayListOf())
         binding.mListMailsRecycler.adapter = mAdapter
     }
-
     private fun getData(){
         mailViewModel.getMails(this@MainActivity)!!.observe(this, Observer {
             mAdapter.updateList(it,this)
         })
     }
-
     override fun onQueryTextSubmit(query: String?): Boolean {
         return false
     }
-
     override fun onQueryTextChange(newText: String?): Boolean {
-        mailViewModel.filterMails(newText!!)!!.observe(this, Observer {
+        mailViewModel.filterMails(newText!!,this)!!.observe(this, Observer {
             mAdapter.updateList(it,this)
         })
         return false
     }
 
     override fun refreshData() {
-        mailViewModel.getMails()!!.observe(this, Observer {
+        mailViewModel.getAllMails(this)!!.observe(this, Observer {
+            mAdapter.updateList(it,this)
+        })
+    }
+
+    override fun deleteMail(mIdEmail: Int) {
+        mailViewModel.deleteMail(this,mIdEmail).observe(this, Observer {
             mAdapter.updateList(it,this)
         })
     }
